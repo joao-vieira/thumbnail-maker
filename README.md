@@ -16,7 +16,7 @@ Example result request:
 `curl "http://localhost:5000/result"`
 
 ## Tests
-In order to run tests, just type `pytest` while in the thumbnail-maker directory. Currently only one example image is tested, in a production environment we would test edge cases like a 1x1px image or very large images. 
+In order to run tests, just type `pytest` while locally in the thumbnail-maker directory. Currently only one example image is tested, in a production environment we would test edge cases like a 1x1px image or very large images. 
 
 ## Dependencies and Libraries
 I chose Flask for setting up the basic API structure. flask_executor was used for the long-running job architecture, since its futures library allows users to retrieve results only when they are ready. Pillow was the library chosen for image processing, since it contains a good resize function. Pytest was used for testing.
