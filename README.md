@@ -1,7 +1,7 @@
 ### Thumbnail Maker
 
 ## Description
-This API receives an image in Base64 format, and resizes it to 100x100px. Since image processing can take time, a long-running job architecture was implemented. For the purpose of this exercise, a simple implementation with the library flask_executor was implemented.
+This API receives an image in Base64 format, and resizes it to 100x100px. Since image processing can take time, a long-running job architecture was implemented. For the purpose of this exercise (and due to time constraints), a very simple implementation with the library flask_executor to allow one image to be processed at a time was implemented.
 
 ## How to Use
 To start the server, run `docker-compose up`
@@ -14,3 +14,13 @@ Example image request:
 
 Example result request:
 `curl "http://localhost:5000/result"`
+
+## Tests
+In order to run tests, just type `pytest` while in the thumbnail-maker directory. Currently only one example image is tested, in a production environment we would test edge cases like a 1x1px image or very large images. 
+
+## Dependencies and Libraries
+I chose Flask for setting up the basic API structure. flask_executor was used for the long-running job architecture, since its futures library allows users to retrieve results only when they are ready. Pillow was the library chosen for image processing, since it contains a good resize function. Pytest was used for testing.
+
+## Possible improvements
+- When it comes to making a long-running job architecture, with more time I would have liked to incorporate the use of Redis and Celery, creating queue-based workers.
+- A logging system would be essential to debugging the API in a production environment.
